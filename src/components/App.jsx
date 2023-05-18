@@ -8,6 +8,7 @@ import useLocalStorage from 'Hooks/useLocalStorage';
 
 const App = () => {
   const [contacts, setContacts] = useLocalStorage('contacts', innitialContacts);
+  console.log(contacts);
   const [filter, setFilter] = useState('');
 
   const deleteContact = contactId => {
@@ -17,18 +18,15 @@ const App = () => {
   };
 
   const addContact = newContact => {
+    console.log(newContact);
     contacts.filter(
-      contact =>
-        contact.name.toLowerCase().trim() ===
-          newContact.name.toLowerCase().trim() ||
-        contact.number.trim() === newContact.number.trim()
-    ).length
-      ? alert(`${newContact.name}: is already in contacts`)
-      : setContacts(prevContacts => {
-          return {
-            contacts: [newContact, ...prevContacts],
-          };
-        });
+      ({ name, number }) =>
+        name.toLowerCase().trim() ===
+          newContact.dataName.toLowerCase().trim() ||
+        number.trim() === newContact.dataNumber.trim()
+    )
+      ? alert(`${newContact.dataName}: is already in contacts`)
+      : setContacts(contacts => [{ ...newContact }, ...contacts]);
   };
   const changeFilter = e => {
     setFilter(e.currentTarget.value.toLowerCase());

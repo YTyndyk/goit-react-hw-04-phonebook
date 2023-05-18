@@ -10,7 +10,7 @@ const Form = ({ onSubmit }) => {
   const [number, setNumber] = useState('');
 
   const handleChange = event => {
-    console.log(event.currentTarget);
+    console.log(event.currentTarget.value);
     const { name, value } = event.currentTarget;
 
     if (name === 'name') setName(value);
@@ -19,7 +19,10 @@ const Form = ({ onSubmit }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    onSubmit({ id: nanoid(), ...name, number });
+    const dataName = event.target.name.value;
+    const dataNumber = event.target.number.value;
+
+    onSubmit({ id: nanoid(), dataName, dataNumber });
     reset();
   };
   const reset = () => {
