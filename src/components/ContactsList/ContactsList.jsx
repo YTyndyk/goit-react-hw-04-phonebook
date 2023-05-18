@@ -2,7 +2,7 @@ import React from 'react';
 import css from '../GlobalStyles.module.css';
 import PropTypes from 'prop-types';
 
-const ContactsList = ({ contacts, onDeleteContact }) => (
+const ContactsList = (contacts, onDeleteContact) => (
   <ul className={css.contactList}>
     {contacts.map(({ id, name, number }) => (
       <li className={css.item} key={id}>
