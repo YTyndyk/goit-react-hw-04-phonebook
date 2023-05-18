@@ -15,7 +15,6 @@ const App = () => {
       prevContacts.filter(contact => contact.id !== contactId)
     );
   };
-
   const addContact = newContact => {
     const existedContact = contacts.some(
       contact =>
