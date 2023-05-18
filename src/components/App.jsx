@@ -21,7 +21,6 @@ const App = () => {
       contact =>
         contact.name === newContact.name || contact.number === newContact.number
     );
-
     if (existedContact) {
       return alert(`${newContact.name}: is already in contacts`);
     }
